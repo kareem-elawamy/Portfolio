@@ -64,17 +64,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const splash = document.getElementById('splash');
 
-    // Give it 1.8 seconds to show the animation, then fade it out
-    if (splash) {
+    // === SPLASH: Code Rain Canvas ===
+    const rainCanvas = document.getElementById('splash-rain');
+    if (rainCanvas && splash) {
+        const ctx = rainCanvas.getContext('2d');
+        rainCanvas.width = window.innerWidth;
+        rainCanvas.height = window.innerHeight;
+
+        const chars = '01{}[]<>/\\|=+-*&^%$#@!;:const let var fn()=>async await import export class new return if else for while .NET Angular C# SignalR';
+        const charArr = chars.split('');
+        const fontSize = 13;
+        const columns = Math.floor(rainCanvas.width / fontSize);
+        const drops = new Array(columns).fill(1);
+
+        let rainAnimId;
+        function drawRain() {
+            ctx.fillStyle = 'rgba(5, 5, 8, 0.06)';
+            ctx.fillRect(0, 0, rainCanvas.width, rainCanvas.height);
+
+            for (let i = 0; i < drops.length; i++) {
+                const char = charArr[Math.floor(Math.random() * charArr.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                // Color variety: cyan / purple / blue
+                const colorRng = Math.random();
+                if (colorRng < 0.5) {
+                    ctx.fillStyle = 'rgba(143, 245, 255, 0.35)';
+                } else if (colorRng < 0.8) {
+                    ctx.fillStyle = 'rgba(172, 138, 255, 0.3)';
+                } else {
+                    ctx.fillStyle = 'rgba(101, 175, 255, 0.3)';
+                }
+
+                ctx.font = `${fontSize}px monospace`;
+                ctx.fillText(char, x, y);
+
+                if (y > rainCanvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+            rainAnimId = requestAnimationFrame(drawRain);
+        }
+        drawRain();
+
+        // === SPLASH: Terminal Typing ===
+        const typedEl = document.getElementById('splash-typed');
+        const typingText = 'npx kareem-portfolio --init';
+        let charIdx = 0;
+        function typeChar() {
+            if (typedEl && charIdx < typingText.length) {
+                typedEl.textContent += typingText[charIdx];
+                charIdx++;
+                setTimeout(typeChar, 50 + Math.random() * 60);
+            }
+        }
+        setTimeout(typeChar, 400);
+
+        // Fade out after 3 seconds
         setTimeout(() => {
             splash.classList.add('opacity-0');
             splash.style.pointerEvents = 'none';
+            cancelAnimationFrame(rainAnimId);
 
-            // Remove from DOM after fade out completes
             setTimeout(() => {
                 splash.classList.add('hidden');
             }, 1000);
-        }, 1800);
+        }, 3000);
     }
 
     // Modal interactivity

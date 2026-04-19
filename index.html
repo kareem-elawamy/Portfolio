@@ -164,12 +164,15 @@
         <!-- Hero Section -->
         <section
             class="relative min-h-[921px] flex flex-col items-center justify-center px-8 text-center overflow-hidden">
+            <!-- 3D Three.js Background -->
+            <div id="hero-3d-canvas" class="absolute inset-0 z-0"></div>
+
             <!-- Animated Background Glows -->
             <div
-                class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/10 blur-[120px] animate-glow-slow transition-opacity">
+                class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-primary/10 blur-[120px] animate-glow-slow transition-opacity z-10 pointer-events-none">
             </div>
             <div
-                class="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-secondary/10 blur-[120px] animate-glow-delay transition-opacity">
+                class="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-secondary/10 blur-[120px] animate-glow-delay transition-opacity z-10 pointer-events-none">
             </div>
 
             <div class="relative z-10 max-w-5xl">
@@ -201,12 +204,7 @@
                     </a>
                 </div>
             </div>
-            <!-- Scroll Indicator -->
-            <div
-                class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-500 animate-bounce">
-                <span class="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-                <span class="material-symbols-outlined">expand_more</span>
-            </div>
+            
         </section>
         <!-- About & Stats -->
         <section class="py-24 px-8 max-w-7xl mx-auto" id="narrative">
@@ -217,7 +215,7 @@
                     <p class="text-lg text-on-surface-variant leading-relaxed mb-8">
                         My philosophy is rooted in the "Digital Alchemist" concept: transforming complex business
                         requirements into seamless, high-performance digital realities. As a Tech Team Lead at <span
-                            class="text-white font-bold">NATU ICPC</span> and Vice HR at <span
+                            class="text-white font-bold">NATU ICPC</span> and Head HR at <span
                             class="text-white font-bold">GDG Assiut</span>, I blend technical rigor with leadership that
                         scales.
                     </p>
@@ -230,7 +228,7 @@
                         </div>
                         <div data-reveal="up" data-delay="4"
                             class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/10 flex-1 min-w-[200px]">
-                            <span class="block text-3xl font-black text-secondary mb-1">Vice HR</span>
+                            <span class="block text-3xl font-black text-secondary mb-1">Head HR</span>
                             <span class="text-sm uppercase tracking-widest text-zinc-500">GDG Assiut</span>
                         </div>
                     </div>
@@ -507,7 +505,7 @@
                                     <span class="material-symbols-outlined text-tertiary text-2xl">groups</span>
                                 </div>
                                 <div>
-                                    <h3 class="text-lg font-black text-white">Vice HR</h3>
+                                    <h3 class="text-lg font-black text-white">Head HR</h3>
                                     <p class="text-tertiary font-bold text-sm">GDG Assiut</p>
                                 </div>
                             </div>
@@ -545,7 +543,7 @@
         <!-- Projects Bento Grid -->
         <section class="py-24 px-8 max-w-7xl mx-auto" id="projects">
             <div class="mb-16">
-                <h2 class="text-5xl font-black tracking-tighter mb-4" data-reveal="up">Case Studies.</h2>
+                <h2 class="text-5xl font-black tracking-tighter mb-4" data-reveal="up">Projects.</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary line-reveal" data-reveal="up"
                     data-delay="2"></div>
             </div>
@@ -741,8 +739,32 @@
                 </div>
             </div>
 
-            <!-- Project 8: SignalRGame -->
-            <div data-reveal="up" data-delay="8" data-title="SignalR X and O Game"
+            <!-- Project 8: Activ -->
+            <div data-reveal="up" data-delay="8" data-title="Activ Training Center"
+                data-desc="Activ is a dynamic web application built for a premier training center, designed to streamline the booking of sports facilities and dedicated training sessions. The platform provides an intuitive interface for users to discover various sports, verify facility availability, and schedule training times seamlessly.<br/><br/><b>Key Features:</b><br/><ul class='list-disc pl-5 mt-2 space-y-1 text-sm'><li><b>Sports Booking:</b> Browse and book different sports with assigned trainers.</li><li><b>Training Management:</b> Manage schedules and training slots effectively.</li><li><b>User Portal:</b> Dedicated dashboards for athletes to track progress.</li></ul>"
+                data-badges="<span class='text-[10px] bg-primary/20 text-primary px-2 py-1 rounded font-mono'>Web App</span><span class='text-[10px] bg-white/10 text-white px-2 py-1 rounded font-mono'>Booking</span>"
+                data-github="" data-demo="" data-img="./img/activ.jpg"
+                class="project-card md:col-span-8 md:row-span-1 group relative rounded-3xl overflow-hidden bg-surface-container-low border border-outline-variant/10 hover:border-primary/30 transition-all duration-500 cursor-pointer">
+                <div class="absolute inset-0 z-0">
+                    <img src="./img/activ.jpg" alt="Activ Training Center"
+                        class="w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-r from-background via-background/10 to-transparent">
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col h-full justify-between items-start relative z-10">
+                    <span
+                        class="material-symbols-outlined text-white text-4xl bg-white/10 p-3 rounded-2xl w-14 h-14 flex items-center justify-center">sports_gymnastics</span>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2 text-white">Activ Platform</h3>
+                        <p class="text-sm text-on-surface-variant line-clamp-2">
+                            Sports booking and training management system for a premier center.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9: SignalRGame -->
+            <div data-reveal="up" data-delay="9" data-title="SignalR X and O Game"
                 data-desc="A real-time two-player Tic-Tac-Toe (X and O) game built with ASP.NET Razor Pages, CSS, and JavaScript. Players are connected through SignalR WebSockets enabling instant, live gameplay between two users directly in the browser with no latency.<br/><br/><b>Key Highlights:</b><br/><ul class='list-disc pl-5 mt-2 space-y-1 text-sm'><li><b>Real-time Multiplayer:</b> SignalR WebSocket connection syncs moves instantly between both players.</li><li><b>Razor Pages:</b> Server-side rendering with ASP.NET for fast initial load.</li><li><b>Clean UI:</b> Minimal, responsive game board with pure CSS styling.</li></ul>"
                 data-badges="<span class='text-[10px] bg-secondary/20 text-secondary px-2 py-1 rounded font-mono'>ASP.NET</span><span class='text-[10px] bg-primary/20 text-primary px-2 py-1 rounded font-mono'>SignalR</span><span class='text-[10px] bg-white/10 text-white px-2 py-1 rounded font-mono'>Razor Pages</span>"
                 data-github="https://github.com/kareem-elawamy/SignalRGame" data-demo=""
@@ -881,14 +903,53 @@
             </div>
         </div>
     </footer>
-    <!-- Initial Overlay Reveal (Splash Screen) -->
-    <div class="fixed inset-0 z-[200] bg-black flex items-center justify-center transition-all duration-1000 ease-in-out"
+    <!-- Initial Overlay Reveal (Splash Screen) — 3D Dev Theme -->
+    <div class="fixed inset-0 z-[200] bg-[#050508] flex items-center justify-center transition-all duration-1000 ease-in-out overflow-hidden"
         id="splash">
-        <div class="flex flex-col items-center">
-            <h2 class="text-3xl md:text-5xl font-black tracking-[1em] text-white animate-pulse ml-4">KAREEM</h2>
-            <div class="w-48 h-1 mt-6 bg-zinc-800 rounded-full overflow-hidden">
-                <div class="w-full h-full bg-primary origin-left animate-[progress_1.8s_ease-in-out]"></div>
+
+        <!-- Code Rain Canvas (background) -->
+        <canvas id="splash-rain" class="absolute inset-0 w-full h-full opacity-20 pointer-events-none"></canvas>
+
+        <!-- Scan-lines overlay -->
+        <div class="absolute inset-0 pointer-events-none splash-scanlines"></div>
+
+        <!-- Floating grid floor -->
+        <div class="absolute inset-0 splash-grid-floor pointer-events-none"></div>
+
+        <!-- Main content wrapper -->
+        <div class="relative z-10 flex flex-col items-center gap-6">
+
+            <!-- 3D Rotating Cube -->
+            <div class="splash-cube-viewport">
+                <div class="splash-cube" id="splash-cube">
+                    <div class="splash-cube-face splash-cube-front"></div>
+                    <div class="splash-cube-face splash-cube-back"></div>
+                    <div class="splash-cube-face splash-cube-right"></div>
+                    <div class="splash-cube-face splash-cube-left"></div>
+                    <div class="splash-cube-face splash-cube-top"></div>
+                    <div class="splash-cube-face splash-cube-bottom"></div>
+                </div>
             </div>
+
+            <!-- Glitch Text -->
+            <h2 class="splash-glitch-text" data-text="KAREEM.DEV">
+                <span>KAREEM.DEV</span>
+            </h2>
+
+            <!-- Terminal typing line -->
+            <div class="splash-terminal">
+                <span class="splash-terminal-prompt">$</span>
+                <span class="splash-terminal-text" id="splash-typed"></span>
+                <span class="splash-terminal-cursor">█</span>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="w-56 h-[3px] mt-4 bg-white/5 rounded-full overflow-hidden relative">
+                <div class="splash-progress-bar"></div>
+            </div>
+
+            <!-- Status line -->
+            <p class="text-[10px] uppercase tracking-[0.4em] text-zinc-600 font-mono">Initializing portfolio…</p>
         </div>
     </div>
 
@@ -946,6 +1007,8 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="hero3d.js"></script>
     <script src="main.js"></script>
 </body>
 
